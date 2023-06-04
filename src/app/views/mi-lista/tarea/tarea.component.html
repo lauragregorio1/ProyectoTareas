@@ -1,0 +1,25 @@
+<div class="tarea" [ngStyle]="{ 'background-color': Realizada?'#C7E9B0':'#D8D8D8'}">
+    <div id="inputs">
+
+        <input [(ngModel)]="Titulo" [disabled]="!Editable" class="tarjeta" id="inputTitulo" placeholder="Título">
+        <input [(ngModel)]="Fecha" [disabled]="!Editable" class="tarjeta" id="inputFecha" placeholder="Fecha" type="datetime-local">
+        <textarea [(ngModel)]="Detalle" [disabled]="!Editable" class="tarjeta" id="inputDetalle" placeholder="Descripción"></textarea>
+        <div id="check">
+            <label for="myCheckbox" >
+                Hecha:
+              </label>
+            <input [(ngModel)]="Realizada" type="checkbox" id="myCheckbox"  (change)="handleChange($event)">
+
+        </div>
+
+      
+    </div>
+    <div id="botones">
+        <button id="borrar" (click)="borrarTarea(this.elementRef.nativeElement.querySelector('#inputTitulo').value)">Borrar</button>
+        <!--<button id="editar">Editar</button>-->
+        <button id="guardar" [disabled]="!Editable" (click)="guardarTarea()">Guardar</button>
+
+
+    </div>
+    
+</div>

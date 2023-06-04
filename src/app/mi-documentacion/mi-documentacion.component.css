@@ -1,0 +1,11 @@
+#documentación{
+    text-align: center;
+    margin-left: 1em;
+}
+p,h3{
+    text-align: left;
+}
+h2{
+    margin-top: 2em;
+    margin-bottom: 2em;
+}

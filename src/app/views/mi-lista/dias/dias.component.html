@@ -1,0 +1,9 @@
+<div id="calendario">
+    <p>Selecciona un día:</p>
+    <input type="date" id="fecha" (change)="filtrarPorDias()" >
+</div>
+
+<div id="contenido">
+<app-tarea  *ngFor="let cadaTarea of listadoDias"[Titulo]="cadaTarea.Titulo" [Fecha]="cadaTarea.Fecha"[Detalle]="cadaTarea.Detalle" [Realizada]="cadaTarea.Realizada" [Editable]="cadaTarea.Editable"></app-tarea>        
+
+</div>

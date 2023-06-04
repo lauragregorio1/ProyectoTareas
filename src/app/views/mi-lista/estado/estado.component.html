@@ -1,0 +1,15 @@
+
+<div id="contenido">
+    <div id="realizadas">
+        <h3>TAREAS REALIZADAS</h3>
+        <app-tarea  *ngFor="let cadaTarea of listaTareasRealizadas"[Titulo]="cadaTarea.Titulo" [Fecha]="cadaTarea.Fecha"[Detalle]="cadaTarea.Detalle" [Realizada]="cadaTarea.Realizada" [Editable]="cadaTarea.Editable"></app-tarea>        
+
+
+    </div>
+    <div id="pendientes">
+        <h3>TAREAS PENDIENTES</h3>
+        <app-tarea  *ngFor="let cadaTarea of listaTareasPendientes"[Titulo]="cadaTarea.Titulo" [Fecha]="cadaTarea.Fecha"[Detalle]="cadaTarea.Detalle" [Realizada]="cadaTarea.Realizada" [Editable]="cadaTarea.Editable"></app-tarea>        
+
+
+    </div>
+</div>

@@ -1,0 +1,30 @@
+#calendario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+input {
+    margin-top: 2em;
+    width: 150px;
+    height: 40px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+
+
+#contenido {
+    background-color: #ffffff;
+    width: 95vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}

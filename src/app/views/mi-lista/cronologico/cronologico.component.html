@@ -1,0 +1,9 @@
+
+
+<div id="botones">
+    <button (click)="agregarTarea()">AGREGAR</button>
+</div>
+<div id="lista">
+    <app-tarea [cron]="this" *ngFor="let cadaTarea of listadoTareas"[Titulo]="cadaTarea.Titulo" [Fecha]="cadaTarea.Fecha"[Detalle]="cadaTarea.Detalle" [Realizada]="cadaTarea.Realizada" [Editable]="cadaTarea.Editable"></app-tarea>        
+</div>
+

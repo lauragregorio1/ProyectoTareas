@@ -1,0 +1,14 @@
+<div id="header">
+    <h1>TO DO LIST</h1>
+   
+</div>
+
+<app-mi-menu [app]="this"></app-mi-menu>
+<div id="contenedorLista">
+    <app-mi-lista *ngIf="(opcion==1)"></app-mi-lista>
+    <app-cronologico *ngIf="(opcion==2)"></app-cronologico>
+    <app-dias  *ngIf="(opcion==3)"></app-dias>
+    <app-estado  *ngIf="(opcion==4)"></app-estado>
+    <app-mi-documentacion  *ngIf="(opcion==5)"></app-mi-documentacion>
+    
+</div>

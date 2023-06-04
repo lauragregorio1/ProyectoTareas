@@ -1,0 +1,33 @@
+
+#contenido {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 15px;
+    grid-row-gap: 0px;
+    width: 100vw;
+}
+#realizadas{
+    text-align: center;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #93BFCF;
+    border-radius: 10px;
+    padding-top: 1em;
+    margin-left: 1em;
+
+}
+#pendientes{
+    text-align: center;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #BDCDD6;
+    border-radius: 10px;
+    padding-top: 1em;
+    margin-right: 1em;
+
+}

@@ -1,0 +1,96 @@
+<div id="documentación">
+<h2>Diagrama componentes</h2>
+<img src="assets\DiagramaComponentes.png" alt="">
+<h2>Diagrama funciones</h2>
+<img src="assets\DiagramaFunciones.png" alt="">
+<h2>Explicación de código e invocación de funciones</h2>
+<br><br>
+<h3>App component</h3>
+<br>
+<p>HTML: He creado un div de header que incluye el título. Después he añadido el componente menú. Finalmente he creado otro div en el que he incluido
+    el resto de componentes: mi-lista, cronológico, estado, día y mi-documentación. En cada uno utilizo un *ngIf que comprueba el valor de la variable 'opción', esto sirve para 
+    mostrar un componente u otro y depende de una función creada en el componente mi-menu. <br>
+    CSS: al header le he dado estilo con color de letra y color de fondo, con el display-flex he centrado el título. <br>
+    TS: hay una única función llamada menu() que recibe como parámetro un número y actualiza el atributo de clase 'opcion' al valor del parámetro.
+    Se utiliza para mostrar o no mostrar los componentes según el valor de la variable 'opcion'.
+</p>
+<br><br>
+<h3>Mi-menu component</h3>
+<br>
+<p>HTML: He creado una lista desordenada y cada elemento es uno de los botones que conduce al repectivo componente. Tienen un (click) que llama a la función menu() y 
+    le pasa por parámetro un número. <br>
+    CSS: le he dado color de fondo azul y blanco a las letras, e invertido cuando hacer hover a un elemento del menú. Tienen border radius y cursor-pointer 
+    por estética. Con flexbox centro el contenido. <br>
+    TS: la función menu() recibe un número por parámetro y llama a la función menu() del app-component pasándole dicho número.
+</p>
+<br><br>
+<h3>Mi-lista component</h3>
+<br>
+<p>HTML: he creado un botón con un (click) que invoca la función agregarTarea(). Después he añadido el componente tarea el cual con un *ngFor
+    recorre el listadoTareas y añade las tareas al html, con sus atributos y campos. <br>
+    CSS: al div que contiene las tareas le he añadido display-flex y flex-wrap para que no se cree un scroll horizontal al ir añadiendo tareas. Al botón le he dado estilo con color, shadow, cursor-pointer,
+    border-radius. He usado transition y transform para crear el efecto de pulsado. <br>
+    TS:en el constructor recupero las tareas que estén guardadas en localStorage si hay. La función agregarTarea() comprueba que la boolean tareaAgregada sea false 
+    y en tal caso crea un nuevo objeto tarea y lo añade al array listadoTareas.
+ </p>
+ <br><br>
+<h3>Tarea component</h3>
+<br>
+<p>
+    HTML: el div de la tarea contiene un input para el título, un input type: date para la fecha, una textarea para la descripción y un input checkbox para
+    marcar como realizada el cual llama a un $event cuando cambia. En un div de botones están los botones de borrar (que invoca borrarTarea()) y guardar (invoca guardarTarea()). Loa inputs
+    y el boton guardar tienen un [disabled] que es true o false según el valor de la variable 'editable', esto sirve para que al guardar una 
+    tarea no puedas alterar su contenido. <br>
+    CSS: la mayoría del código son margenes, paddings y flexbox para centrar bien los inputs, botones, etc. A los botones les he dado el mismo
+    css que al boton 'agregar' del componente mi-lista. <br>
+    TS: Hay un evento "handlechange" el cual comprueba si la checkbox está marcada, si lo está, se invoca la función realizarTarea() y si se desmarca, 
+    se invoca la función desrealizarTarea(). La función guardarTarea() primero deshabilita todos los imputs de la tarea, luego se comprueba si el input del 
+    título y el de la fecha no están vacíos, si no lo están se crea una nueva tarea y en cada campo se añade el valor de los inputs. Después, con un getItem
+    se recoge lo que hay en el localStorage , se almacena en listaTareasStorage y a eso se le añade la nueva tarea, para después con un setItem se guarda en el 
+    localStorage de nuevo. También hay un for para que no se repita el título.
+    La función realizarTarea() recibe por parámetro el título de la tarea, con un for se recorre listaTareasStorage y se comprueba si hay alguna tarea con ese título, en 
+    tal caso la variable Realizada de esa tarea se convierte en true, se le cambia el color de fondo y se vuelve a guardar el array listaTareasStograge en el localStorage. 
+    La función borrarTarea() recibe por parámetro el título de la tarea, se busca en listaTareasStograge y listadoTareas el índice a eliminar (el objeto cuyo título es igual al parámetro recibido) 
+    y con un slice lo elimina, luego guarda listaTareasStograge en el localStorage. 
+    La función desrealizarTarea() recibe por parámetro el título de la tarea, con un for se recorre listaTareasStorage y se comprueba si hay alguna tarea con ese título, en 
+    tal caso la variable Realizada de esa tarea se convierte en false, se le cambia el color de fondo y se vuelve a guardar el array listaTareasStograge en el localStorage. 
+</p>
+<br><br>
+<h3>Estado component</h3>
+<br>
+<p>
+    HTML: hay dos div, en uno se almacenarán las tareas pendientes y en el otro las realizadas. <br>
+    CSS: cada div tiene un fondo diferente, con flexbox centro el contenido. El div que contiene a ambos tiene display-grid con dos columnas. <br>
+    TS: en el constructor recupero las tareas que estén guardadas en localStorage si hay. Recorro listadoTareas y los elementos en los que Realizada es true se añaden 
+    al array listaTareasRealizadas, los que tienen Realizada a false se añaden al array listaTareasPendientes. Estos son los array que se muestran en cada div.
+</p>
+<br><br>
+<h3>Dias component</h3>
+<br>
+<p>
+    HTML: Hay un div con un input tipo date que llama a la función filtrarPorDias(). En otro div están los componentes tarea del array listadoDias. <br>
+    CSS: El div del calendario utiliza flexbox para centrar el contenido. El div de las tareas utiliza flexbox y flexwrap para agrupar las tareas y 
+    evitar el scroll horizontal. <br>
+    TS: En el constructor, se recuperan las tareas del storage si las hay. La función filtrarPorDias() recoge la fecha marcada en el input en una variable 
+    la cual se compara en un bucle con la propiedad fecha de las tareas de listadoTareas, si son iguales, se añade ese elemento a listadoDias.
+</p>
+<br><br>
+<h3>Cronologico component</h3>
+<br>
+<p>
+    HTML:  Hay un div con un boton que llama a la función agregarTarea(). En otro div están los componentes tarea del array listadoTareas. <br>
+    CSS:  El div de las tareas utiliza flexbox y flexwrap para agrupar las tareas y 
+    evitar el scroll horizontal.  Al botón le he dado estilo con color, shadow, cursor-pointer,
+    border-radius. He usado transition y transform para crear el efecto de pulsado.  <br>
+    TS: En el constructor, se recuperan las tareas del storage si las hay y se llama a la función ordenarFechas(). La función ordenarFechar() utiliza short para comparar las fechas de 
+    los elementos de listadoTareas y ordenar así el array. 
+
+</p>
+<br><br>
+<h2>Problemas y soluciones</h2>
+<br>
+<p>En el componente cronológico he tenido que investigar sobre algún algoritmo que ordenase las fechas de más recientes a más lejanas <br>
+En el componente días me he decantado por usar un calendario en el cual al seeccionar una fecha aparezcan las tareas de esa fecha en vez de que las tareass salgan agrupadas en tarjetas por días ya que era más sencillo <br>
+Creé un componente sin querer y no podía borrarlo sin que se rompiese todo el proyecto, la solución fue borrarlo primero del app.module.ts <br>
+Al recuperar de localStorage daba error porque podía devolver nulo y no se puede parsear un null, la solución fue ponerle un OR hacia un elemento vacío </p>
+</div>
